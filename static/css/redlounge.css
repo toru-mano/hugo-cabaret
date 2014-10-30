@@ -26,8 +26,7 @@ a {
 a:hover {
 	color:#E54028;
 }
-a:hover,
-a:focus {
+a:hover, a:focus {
     text-decoration: underline;
 }
 a.pure-button:hover, a.pure-button:focus {
@@ -103,6 +102,7 @@ h2.brand-tagline {
 }
 .sidebar a {
   color: #fff;
+  text-decoration: none;
 }
 .sidebar a:hover {
 	color:#E54028;
