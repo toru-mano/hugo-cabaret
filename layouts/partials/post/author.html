@@ -1,0 +1,6 @@
+{{ if not .Params.noauthor }}
+{{ if .Params.author }}
+<span class="post-author-single">By <a class="post-author" {{ if .Params.authorlink }}href="{{ .Params.authorlink }}"{{ end }} target="{{ .Params.authorlinktarget }}">{{ .Params.author }}</a></span>
+{{ partial "authorsocial.html" . }}
+{{ end }}
+{{ end }}

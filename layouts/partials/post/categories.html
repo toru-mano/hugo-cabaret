@@ -1,0 +1,7 @@
+{{ if .Params.categories }}
+<div class="post-categories">
+  {{ range .Params.categories }}
+  <a class="post-category post-category-{{ . | urlize }}" href="/categories/{{ . | urlize }}">{{ . }}</a>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,15 +1,26 @@
-Red Lounge
-===========
+# Cabaret
 
-This is an open-source Hugo theme designed by [@shift8creative](http://www.twitter.com/shift8creative) to be responsive and clean. It uses Pure.css and contains a few web fonts from Google as well as Font Awesome icons. 
-So despite it being simple, it has a lot of flexibility in terms of typography and design elements. It's also quite configurable as it has a few variables to change the
-appearance and features of the pages. By default, excess features (and JavaScript) is not included.
+Cabaret is an open-source Hugo theme originally based on [Red
+Lounge][redlounge], designed by Tom Maiaroto
+([@shift8creative][shift8creative]).
+
+He designed it to be responsive and clean. It uses [Pure.css][purecss] and
+contains a few web fonts from Google as well as [Font Awesome
+icons][fontawesome]. It’s reasonably simple, but has a lot of flexibility in
+terms of typography and design elements. It's also quite configurable as it
+has a few variables to change the appearance and features of the pages. By
+default, excess features (and JavaScript) are not included.
+
+I’m modifying it because I have different opinions on how some of these
+options should be implemented, and I’m going to make a few changes on how some
+of the templates and options are composed for even more customizability.
 
 ## Configuration and Options
 
 ### Sidebar Title & Tagline Params
 
-The sidebar can be configured with your main site config using params. For example, in ```config.toml```
+The sidebar can be configured with your main site config using params. For
+example, in ```config.toml```
 
 ```
 [params]
@@ -143,3 +154,8 @@ There are a few partials being used so that key areas can be easily overwritten.
  - ```listtop.html``` Placed at the top of the page for list.html
  - ```footer.html``` The footer
  - ```bodyend.html``` Right before ```</body>``` (within list.html, single.html, and index.html - be sure to include it when/if overwriting with your own index.html)
+
+ [redlounge]: https://github.com/tmaiaroto/hugo-redlounge
+ [shift8creative]: https://www.twitter.com/shift8creative
+ [purecss]: http://purecss.io/
+ [fontawesome]: https://fortawesome.github.io/Font-Awesome/

@@ -1,0 +1,16 @@
+{{ if .Params.revisions }}
+  <hr/>
+  <blockquote id="revisions" class="revisions">
+    <p>
+      This article was modified from its original published form. The most
+      recent modification was on
+      <strong>{{ (index .Params.revisions 0).date }}</strong>.
+      <a href="#post-title">[ back ]</a>
+    </p>
+    <ul>
+      {{ range .Params.revisions }}
+        <li><em>{{ .date }}</em> {{ .rev | safeHtml }}</li>
+      {{ end }}
+    </ul>
+  </blockquote>
+{{ end }}

@@ -1,0 +1,7 @@
+{{ if not .Params.nocomment }}
+  {{ if .Site.Params.disqusShortname }}
+    {{ template "_internal/disqus.html" . }}
+  {{ else if .Site.Params.discourseUrl }}
+    {{ partial "comments/discourse.html" . }}
+  {{ end }}
+{{ end }}

@@ -14,21 +14,14 @@
         <h1 class="post-title">{{ .Title }}</h1>
         <h3 class="post-subtitle">{{ .Params.subtitle }}</h3>
 
-        {{ partial "post/date.html" . }}
-        {{ partial "post/author.html" . }}
-        {{ partial "post/categories.html" . }}
         {{ partial "socialsharing/buttons.html" . }}
         {{ partial "post/bannerinline.html" . }}
 
         {{ .Content }}
 
         {{ partial "socialsharing/buttons.html" . }}
-        {{ partial "post/taglist.html" . }}
-        {{ partial "post/paging.html" . }}
       </section>
 
-      {{ partial "post/comment.html" . }}
-        
       {{ partial "footer.html" . }}
     </div>
   </div>

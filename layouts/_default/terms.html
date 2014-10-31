@@ -1,0 +1,41 @@
+{{ partial "header.html" . }}
+
+<body>
+  <div id="layout" class="pure-g">
+    {{ partial "sidebar.html" . }}
+
+    <div id="top" class="content pure-u-1 pure-u-md-3-4">
+      {{ partial "list/top.html" . }}
+
+      {{ $baseUrl := .Site.BaseUrl }}
+      {{ $taxonomyName := .Data.Plural }}
+      {{ $description := printf "%s-desc" .Data.Singular }}
+      {{ $taxonomyDescription := index .Site.Taxonomies $description }}
+
+      <h1 class="post-title">{{ ($taxonomyName | title) }}</h1>
+
+      <ul>
+        {{ range $name, $pages := .Data.Terms }}
+          {{ $page := index $pages 0 }}
+          {{ range $friendly := index $page.Page.Params $taxonomyName }}
+            {{ if eq ($friendly | urlize) $name }}
+            <li>
+              <a href="{{ $baseUrl }}/{{ $taxonomyName }}/{{ $name }}">{{ $friendly }}</a>&nbsp;{{ len $pages }} entries
+            </li>
+            {{ end }}
+          {{ end }}
+
+          {{ $descPages := index $taxonomyDescription $name }}
+          {{ if len $descPages }}
+            {{ $descPage := index $descPages 0 }}
+            <span class="term-desc">{{ $descPage.Page.Content }}</span>
+          {{ end }}
+        {{ end }}
+      </ul>
+
+      {{ partial "footer.html" . }}
+    </div>
+  </div>
+  {{ partial "bodyend.html" . }}
+</body>
+</html>
