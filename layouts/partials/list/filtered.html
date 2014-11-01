@@ -9,14 +9,14 @@
   {{ if and $postLimit (le $index $postLimit) }}
   <section class="post">
     {{ if and $fullPostLimit (lt $index $fullPostLimit) }}
-      {{ .Render "post-full" }}
+      {{ .Render "post/full" }}
     {{ else }}
-      {{ .Render "post-summary" }}
+      {{ .Render "post/summary" }}
     {{ end }}
   </section>
   {{ else }}
     {{ if or (and $allPostLimit (lt $index $allPostLimit)) (lt $index $count) }}
-      {{ .Render "post-title" }}
+      {{ .Render "post/title" }}
     {{ end }}
   {{ end }}
 {{ end }}

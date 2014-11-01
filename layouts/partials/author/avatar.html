@@ -1,3 +1,15 @@
-{{ if .Params.thumbnail }}<div class="post-avatar-wrapper">
-  <img class="post-avatar" alt="" src="{{ .Params.thumbnail }}">
-</div>{{ end }}
+{{ if not .Params.noauthor }}
+  {{ if isset .Params "author" }}
+    {{ if isset .Params.author "avatar" }}
+      <div class="post-avatar-wrapper"><img class="post-avatar" alt="{{ .Params.author.name }}" src="{{ .Params.author.avatar }}"></div>
+    {{ else if isset .Params.author "gravatar" }}
+      <div class="post-avatar-wrapper"><img class="post-avatar" alt="{{ .Params.author.name }}" src="http://www.gravatar.com/avatar/{{ .Params.author.gravatar }}.png"></div>
+    {{ end }}
+  {{ else if and (not .Site.Params.noauthor) .Site.Author }}
+    {{ if isset .Site.Author "avatar" }}
+      <div class="post-avatar-wrapper"><img class="post-avatar" alt="{{ .Site.Author.name }}" src="{{ .Site.Author.avatar }}"></div>
+    {{ else if isset .Site.Author "gravatar" }}
+      <div class="post-avatar-wrapper"><img class="post-avatar" alt="{{ .Site.Author.name }}" src="http://www.gravatar.com/avatar/{{ .Site.Author.gravatar }}.png"></div>
+    {{ end }}
+  {{ end }}
+{{ end }}

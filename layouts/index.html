@@ -11,7 +11,7 @@
           {{ partial "list/filtered.html" . }}
         {{ else }}
           {{ range .Site.Recent }}
-          {{ .Render "post-summary" }}
+          {{ .Render "post/summary" }}
           {{ end }}
         {{ end }}
       </div>

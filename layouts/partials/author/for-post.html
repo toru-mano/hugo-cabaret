@@ -1,0 +1,7 @@
+{{ if not .Params.noauthor }}
+{{ if and (isset .Params "author") (isset .Params.author "name") }}
+<span class="post-author-single">By <a class="post-author"{{ if isset .Params.author "link" }} href="{{ .Params.author.link }}"{{ end }}{{ if isset .Params.author "linkTarget" }} target="{{ .Params.author.linkTarget }}"{{ end }}>{{ .Params.author.name }}</a></span>
+{{ else if and (not .Site.Params.noauthor) (isset .Site.Author "name") }}
+<span class="post-author-single">By <a class="post-author"{{ if isset .Site.Author "link" }} href="{{ .Site.Author.link }}"{{ end }}{{ if isset .Site.Author "linkTarget" }} target="{{ .Site.Author.linkTarget }}"{{ end }}>{{ .Site.Author.name }}</a></span>
+{{ end }}
+{{ end }}
