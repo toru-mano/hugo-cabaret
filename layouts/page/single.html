@@ -1,34 +1,34 @@
-{{ partial "header.html" . }}
+{{ partial "header" . }}
 <body>
-  {{ partial "totop/marker.html" . }}
+  {{ partial "totop/marker" . }}
 
   <div id="layout" class="pure-g">
-    {{ partial "sidebar.html" . }}
+    {{ partial "sidebar" . }}
 
     <div id="top" class="content pure-u-1 pure-u-md-3-4">
-      {{ partial "single/top.html" . }}
+      {{ partial "single/top" . }}
 
-      {{ partial "post/toc.html" . }}
+      {{ partial "post/toc" . }}
 
       <section class="post">
         <h1 class="post-title">{{ .Title }}</h1>
         <h3 class="post-subtitle">{{ .Params.subtitle }}</h3>
 
-        {{ partial "socialsharing/buttons.html" . }}
-        {{ partial "post/bannerinline.html" . }}
+        {{ partial "socialsharing/buttons" . }}
+        {{ partial "post/bannerinline" . }}
 
         {{ .Content }}
 
-        {{ partial "socialsharing/buttons.html" . }}
+        {{ partial "socialsharing/buttons" . }}
       </section>
 
-      {{ partial "footer.html" . }}
+      {{ partial "footer" . }}
     </div>
   </div>
-  {{ partial "totop/script.html" . }}
+  {{ partial "totop/script" . }}
 
-  {{ partial "socialsharing/script.html" . }}
+  {{ partial "socialsharing/script" . }}
 
-  {{ partial "bodyend.html" . }}
+  {{ partial "bodyend" . }}
 </body>
 </html>

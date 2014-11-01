@@ -1,12 +1,12 @@
-{{ partial "doctype.html" . }}
+{{ partial "doctype" . }}
 <head>
   <title>
     {{ .Title }}{{ if ne .Title .Site.Title }} // {{ .Site.Title }}{{ end }}
   </title>
 
-  {{ partial "meta.html" . }}
+  {{ partial "meta" . }}
 
-  {{ partial "og.html" . }}
+  {{ partial "og" . }}
 
   <!-- CSS -->
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/base-min.css">
@@ -48,5 +48,5 @@
     <link rel="stylesheet" type="text/css" href="{{ .Site.Params.categoriescss }}">
   {{ end }}
 
-  {{ partial "headend.html" . }}
+  {{ partial "headend" . }}
 </head>

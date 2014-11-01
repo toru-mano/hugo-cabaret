@@ -1,4 +1,4 @@
-{{ partial "author/avatar.html" . }}
+{{ partial "author/avatar" . }}
 <h1 class="post-title">
   <a href="{{ .RelPermalink }}">{{ .Title }}</a>
 </h1>
@@ -6,14 +6,14 @@
 <h3 class="post-subtitle">{{ .Params.subtitle }}</h3>
 {{ end }}
 
-{{ partial "post/date.html" . }}
-{{ partial "author/for-post.html" . }}
-{{ partial "author/social/list.html" . }}
-{{ partial "post/categories.html" . }}
-{{ partial "socialsharing/buttons.html" . }}
-{{ partial "post/bannerinline.html" . }}
+{{ partial "post/date" . }}
+{{ partial "author/for-post" . }}
+{{ partial "author/social/list" . }}
+{{ partial "post/categories" . }}
+{{ partial "socialsharing/buttons" . }}
+{{ partial "post/bannerinline" . }}
 
 {{ .Content }}
 
-{{ partial "socialsharing/buttons.html" . }}
-{{ partial "post/taglist.html" . }}
+{{ partial "socialsharing/buttons" . }}
+{{ partial "post/taglist" . }}

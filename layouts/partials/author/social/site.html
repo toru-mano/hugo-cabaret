@@ -1,5 +1,5 @@
-    {{ if isset . "icon" }}
-      <span class="post-author-social post-author-{{ .site | lower }}">
-        <a href="{{ .author.url }}" target="_blank"><i class="fa fa-{{ .icon }}"></i></a>
-      </span>
-    {{ end }}
+{{ if isset . "icon" }}
+<span class="post-author-social post-author-{{ .site | lower }}">
+  <a href="{{ .author.url }}" target="_blank"><i class="fa fa-{{ .icon }}"></i></a>
+</span>
+{{ end }}

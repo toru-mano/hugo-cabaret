@@ -1,14 +1,14 @@
-{{ partial "header.html" . }}
+{{ partial "header" . }}
 <body>
   <div id="layout" class="pure-g">
-    {{ partial "sidebar.html" . }}
+    {{ partial "sidebar" . }}
 
     <div id="top" class="content pure-u-1 pure-u-md-3-4">
-      {{ partial "list/top.html" . }}
+      {{ partial "list/top" . }}
 
       <div class="posts">
         {{ if .Site.Params.filter }}
-          {{ partial "list/filtered.html" . }}
+          {{ partial "list/filtered" . }}
         {{ else }}
           {{ range .Site.Recent }}
           {{ .Render "post/summary" }}
@@ -16,9 +16,9 @@
         {{ end }}
       </div>
 
-      {{ partial "footer.html" . }}
+      {{ partial "footer" . }}
     </div>
   </div>
-  {{ partial "bodyend.html" . }}
+  {{ partial "bodyend" . }}
 </body>
 </html>
