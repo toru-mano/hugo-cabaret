@@ -8,7 +8,9 @@
   {{ if and $postLimit (le $index $postLimit) }}
   <section class="post">
     {{ if and $fullPostLimit (lt $index $fullPostLimit) }}
-      <h1 class="post-title">{{ .Title }}</h1>
+      <h1 class="post-title">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </h1>
       <h3 class="post-subtitle">{{ .Params.subtitle }}</h3>
 
       {{ partial "post/date.html" . }}
@@ -23,15 +25,12 @@
       {{ partial "post/taglist.html" . }}
       {{ partial "post/paging.html" . }}
     {{ else }}
-      {{ partial "list/post/summary.html" . }}
+      {{ .Render "post-summary" }}
     {{ end }}
   </section>
   {{ else }}
     {{ if or (and $allPostLimit (lt $index $allPostLimit)) (lt $index (len $filter)) }}
-    <section class="post">
-      <h3 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-      <span class="post-date pull-right">{{ partial "post/date.html" . }}</span>
-    </section>
+      {{ .Render "post-title" }}
     {{ end }}
   {{ end }}
 {{ end }}

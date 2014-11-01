@@ -1,5 +1,3 @@
-{{ if not .Params.noauthor }}
-{{ if .Params.author }}
+{{ if not .Params.noauthor }}{{ if .Params.author }}
 By <a class="post-author" {{ if .Params.authorlink }}href="{{ .Params.authorlink }}"{{ end }}>{{ .Params.author }}</a>
-{{ end }}
-{{ end }}
+{{ end }}{{ end }}
