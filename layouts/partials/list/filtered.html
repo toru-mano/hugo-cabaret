@@ -4,32 +4,18 @@
 {{ $fullPostLimit := .Site.Params.filter.fullPostLimit }}
 {{ $allPostLimit := .Site.Params.filter.allPostLimit }}
 {{ $filter := where .Data.Pages $field $value }}
+{{ $count := len $filter }}
 {{ range $index, $page := where .Data.Pages $field $value }}
   {{ if and $postLimit (le $index $postLimit) }}
   <section class="post">
     {{ if and $fullPostLimit (lt $index $fullPostLimit) }}
-      <h1 class="post-title">
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </h1>
-      <h3 class="post-subtitle">{{ .Params.subtitle }}</h3>
-
-      {{ partial "post/date.html" . }}
-      {{ partial "post/author.html" . }}
-      {{ partial "post/categories.html" . }}
-      {{ partial "socialsharing/buttons.html" . }}
-      {{ partial "post/bannerinline.html" . }}
-
-      {{ .Content }}
-
-      {{ partial "socialsharing/buttons.html" . }}
-      {{ partial "post/taglist.html" . }}
-      {{ partial "post/paging.html" . }}
+      {{ .Render "post-full" }}
     {{ else }}
       {{ .Render "post-summary" }}
     {{ end }}
   </section>
   {{ else }}
-    {{ if or (and $allPostLimit (lt $index $allPostLimit)) (lt $index (len $filter)) }}
+    {{ if or (and $allPostLimit (lt $index $allPostLimit)) (lt $index $count) }}
       {{ .Render "post-title" }}
     {{ end }}
   {{ end }}
