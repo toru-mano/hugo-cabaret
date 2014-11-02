@@ -8,11 +8,14 @@
       {{ partial "list/top" . }}
 
       {{ $root := . }}
+      {{ $title := (.Title | urlize | title) }}
       {{ $page := (index .Data.Pages 0) }}
+      {{ $plural := .Data.Plural }}
+      {{ $singular := .Data.Singular }}
       {{ range $taxonomy, $value := .Data }}
-        {{ if ne $taxonomy "Pages" }}
-          {{ range (index $page.Params $taxonomy) }}
-            {{ if eq ($root.Title | urlize | title) (. | urlize | title) }}
+        {{ if eq $taxonomy $singular }}
+          {{ range (index $page.Params $plural) }}
+            {{ if eq $title (. | urlize | title) }}
               <h1 class="post-title">{{ . }}</h1>
               {{ $desc := printf "%s-desc" $taxonomy }}
               {{ $desctax := index $root.Site.Taxonomies $desc }}

@@ -1,3 +1,4 @@
+{{ if .Truncated }}
 <section class="post">
   <header class="post-header">
     {{ partial "author/avatar" . }}
@@ -6,14 +7,14 @@
     </h1>
   </header>
   {{ partial "list/post/meta" . }}
-  {{ if .Truncated }}
-    <article class="post-summary">
-      {{ .Summary }}
-    </article>
-    <div class="read-more-link">
-      <a href="{{ .RelPermalink }}"><span class="read-more-slashes">//</span>Read More…</a>
-    </div>
-  {{ else }}
-    <article class="post-summary">{{ .Content }}</article>
-  {{ end }}
+  <article class="post-summary">
+    {{ .Summary }}
+  </article>
+  {{ partial "series" . }}
+  <div class="read-more-link">
+    <a href="{{ .RelPermalink }}"><span class="read-more-slashes">//</span>Read More…</a>
+  </div>
 </section>
+{{ else }}
+  {{ .Render "post/full" }}
+{{ end }}

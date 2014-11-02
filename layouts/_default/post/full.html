@@ -2,6 +2,7 @@
 <h1 class="post-title">
   <a href="{{ .RelPermalink }}">{{ .Title }}</a>
 </h1>
+{{ partial "code/badges" . }}
 {{ if .Params.subtitle }}
 <h3 class="post-subtitle">{{ .Params.subtitle }}</h3>
 {{ end }}
@@ -12,6 +13,7 @@
 {{ partial "post/categories" . }}
 {{ partial "socialsharing/buttons" . }}
 {{ partial "post/bannerinline" . }}
+{{ partial "series" . }}
 
 {{ .Content }}
 
