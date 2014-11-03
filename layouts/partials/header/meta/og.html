@@ -1,0 +1,6 @@
+<meta property="og:title" content="{{ if .Params.og.title }}{{ .Params.og.title }}{{ else }}{{ .Title }}{{ end }}" />
+<meta property="og:description" content="{{ if .Params.og.description }}{{ .Params.og.description }}{{ else }}{{ .Description }}{{ end }}" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="{{ .Permalink }}" />
+{{ if .Params.og.image }}<meta property="og:image" content="{{ .Params.og.image }}" />{{ end }}

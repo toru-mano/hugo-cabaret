@@ -1,0 +1,9 @@
+{{ if .Site.Params.social }}
+<div class="social-buttons">
+  {{ range .Site.Params.social }}
+    {{ if and (isset . "url") (isset . "icon") }}
+    <a href="{{ .url }}"><i class="fa lg fa-{{ .icon }}"></i></a>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

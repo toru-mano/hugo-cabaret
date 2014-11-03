@@ -1,0 +1,41 @@
+{{ partial "header" . }}
+<body>
+  <div id="layout" class="pure-g">
+    {{ partial "sidebar" . }}
+
+    <div id="top" class="content pure-u-1 pure-u-md-3-4">
+      {{ partial "list/top" . }}
+
+      <h1 class="post-title">Posts</h1>
+      {{ $pages := .Data.Pages }}
+
+      <div class="posts">
+        {{ range $index, $page := .Data.Pages }}
+          {{ if eq $index 0 }}
+          <h2>{{ .Date.Format "2006" }}</h2>
+          <ul>
+          {{ else if (not (eq (.Date.Format "2006") ((index $pages (sub $index 1)).Date.Format "2006"))) }}
+          </ul>
+          <h2>{{ .Date.Format "2006" }}</h2>
+          <ul>
+          {{ end }}
+            <li>
+              <span>
+                <span class="post-date">
+                  <span class="post-date-day"><sup>{{ .Date.Format "2" }}</sup></span>
+                  <span class="post-date-separator">/</span>
+                  <span class="post-date-month">{{ .Date.Format "Jan" }}</span>
+                </span>
+                <a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }} [draft]{{ end }}</a>
+              </span>
+            </li>
+        {{ end }}
+        </ul>
+      </div>
+
+      {{ partial "footer" . }}
+    </div>
+  </div>
+  {{ partial "bodyend" . }}
+</body>
+</html>

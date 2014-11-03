@@ -1,0 +1,5 @@
+{{ if .Site.Params.sidebar.tagline }}
+<h2 class="brand-tagline">{{ .Site.Params.sidebartagline }}</h2>
+{{ else if .Site.Params.description }}
+<h2 class="brand-tagline">{{ .Site.Params.description }}</h2>
+{{ end }}
