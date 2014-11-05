@@ -1,7 +1,7 @@
 {{ if .Params.badges }}
 <div class="badges">
   {{ range .Params.badges }}
-  <a href="{{ .url }}"><img class="badge" title="{{ .alt }}" alt="{{ .alt }}" src="{{ .img }}"></a>
+    {{ if .url }}<a href="{{ .url }}">{{ end }}{{ if .img }}<img class="badge" title="{{ .alt }}" alt="{{ .alt }}" src="{{ .img }}">{{ else }}{{ .alt }}{{ end }}{{ if .url }}</a>{{ end }}
   {{ end }}
 </div>
 {{ end }}

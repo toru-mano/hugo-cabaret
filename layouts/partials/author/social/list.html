@@ -13,7 +13,7 @@
         {{ end }}
       {{ end }}
     {{ end }}
-  {{ else if and (not .Site.Params.noauthor) (isset .Site.Author "social-sites") }}
+  {{ else if and (not .Site.Author.noauthor) (isset .Site.Author "social-sites") }}
     {{ range $name := index $site.Author "social-sites" }}
       {{ range $social }}
         {{ if eq $name .site }}
