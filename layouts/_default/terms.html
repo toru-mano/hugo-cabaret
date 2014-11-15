@@ -14,24 +14,29 @@
 
       <h1 class="post-title">{{ ($taxonomyName | title) }}</h1>
 
-      <ul>
+      <dl>
         {{ range $name, $pages := .Data.Terms }}
           {{ $page := index $pages 0 }}
+          {{ $len := len $pages }}
           {{ range $friendly := index $page.Page.Params $taxonomyName }}
             {{ if eq ($friendly | urlize) $name }}
-            <li>
-              <a href="{{ $baseUrl }}/{{ $taxonomyName }}/{{ $name }}">{{ $friendly }}</a>&nbsp;{{ len $pages }} entries
-            </li>
+              <dt>
+                <a href="{{ $baseUrl }}/{{ $taxonomyName }}/{{ $name }}">{{ $friendly }}</a>
+                &nbsp;<span class="nav-item-separator">//</span>
+                {{ $len }} {{ if eq 1 $len }}entry{{ else }}entries{{ end }}
+              </dt>
             {{ end }}
           {{ end }}
 
           {{ $descPages := index $taxonomyDescription $name }}
+          <dd>
           {{ if len $descPages }}
             {{ $descPage := index $descPages 0 }}
             <span class="term-desc">{{ $descPage.Page.Content }}</span>
           {{ end }}
+          </dd>
         {{ end }}
-      </ul>
+      </dl>
 
       {{ partial "footer" . }}
     </div>
