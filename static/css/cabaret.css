@@ -12,6 +12,7 @@ html, p, nav, section, article {
 pre {
   font-family: 'Source Code Pro', monospace;
   padding: 0;
+  line-height: 1.3rem;
 }
 p {
   color: #2d303b;
