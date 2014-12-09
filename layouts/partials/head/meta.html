@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
 {{ if .Description }}<meta name="description" content="{{ .Description }}">{{ end }}
-{{ if len .Keywords }}<meta name="keywords" content="{{ range .Keywords }}{{ . }},{{ end }}">{{ end }}
+{{ if len .Keywords }}<meta name="keywords" content="{{ delimit .Keywords "," }}">{{ end }}
 {{ if .Params.author }}<meta name="author" content="{{ .Params.author }}">{{ end }}
 
-{{ partial "header/meta/og" . }}
+{{ partial "head/meta/og" . }}
