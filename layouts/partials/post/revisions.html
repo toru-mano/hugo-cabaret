@@ -9,7 +9,7 @@
     </p>
     <ul>
       {{ range .Params.revisions }}
-        <li><em>{{ .date }}</em> {{ .rev | safeHtml }}</li>
+        <li><em>{{ .date }}</em> {{ .rev | safeHTML }}</li>
       {{ end }}
     </ul>
   </blockquote>

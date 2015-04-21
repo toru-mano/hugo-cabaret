@@ -4,11 +4,11 @@
   <div class="pure-menu pure-menu-horizontal pure-menu-open">
     <ul class="footer-menu">
       {{ range . }}
-      <li><a href="{{ .Url }}">{{ .Name }}</a></li>
+      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
       {{ end }}
     </ul>
   </div>
   {{ end }}
 
-  <p>{{ with .Site.Copyright }}{{ . | safeHtml }}{{ else }}&copy; {{ .Now.Format "2006" }}. All rights reserved.{{ end }} Powered by <a href="http://gohugo.io/">Hugo</a>.</p>
+  <p>{{ with .Site.Copyright }}{{ . | safeHTML }}{{ else }}&copy; {{ .Now.Format "2006" }}. All rights reserved.{{ end }} Powered by <a href="http://gohugo.io/">Hugo</a>.</p>
 </div>

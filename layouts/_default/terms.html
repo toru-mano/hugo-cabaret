@@ -9,7 +9,7 @@
     <div id="top" class="content pure-u-1 pure-u-md-3-4">
       {{ partial "list/top" . }}
 
-      {{ $baseUrl := .Site.BaseUrl }}
+      {{ $baseURL := .Site.BaseURL }}
       {{ $taxonomyName := .Data.Plural }}
       {{ $description := printf "%s-desc" .Data.Singular }}
       {{ $taxonomyDescription := index .Site.Taxonomies $description }}
@@ -23,7 +23,7 @@
           {{ range $friendly := index $page.Page.Params $taxonomyName }}
             {{ if eq ($friendly | urlize) $name }}
               <dt>
-                <a href="{{ $baseUrl }}/{{ $taxonomyName }}/{{ $name }}">{{ $friendly }}</a>
+                <a href="{{ $baseURL }}/{{ $taxonomyName }}/{{ $name }}">{{ $friendly }}</a>
                 &nbsp;<span class="nav-item-separator">//</span>
                 {{ $len }} {{ if eq 1 $len }}entry{{ else }}entries{{ end }}
               </dt>
