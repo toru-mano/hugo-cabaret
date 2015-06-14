@@ -14,10 +14,13 @@
 {{ partial "socialsharing/buttons" . }}
 {{ partial "post/bannerinline" . }}
 
-{{ partial "post/revisions" . }}
+{{ partial "post/revisions/notice" . }}
+
 {{ partial "post/series" . }}
 
 {{ .Content }}
+
+{{ partial "post/revisions/details" . }}
 
 {{ partial "socialsharing/buttons" . }}
 {{ partial "post/tag/list" . }}

@@ -4,6 +4,6 @@
   {{ $sort := sort . }}
   {{ $links := apply $sort "partial" "post/tag/link" "." }}
   {{ $clean := apply $links "chomp" "." }}
-  {{ delimit $clean ",  " }}
+  {{ delimit $clean ", " }}
 </div>
 {{ end }}

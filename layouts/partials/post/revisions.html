@@ -1,16 +1,10 @@
 {{ if .Params.revisions }}
-  <hr/>
+  {{ $.Scratch.Set "post-one-revisions-block" true }}
   <blockquote id="revisions" class="revisions">
-    <p>
-      This article was modified from its original published form. The most
-      recent modification was on
-      <strong>{{ (index .Params.revisions 0).date }}</strong>.
-      <a href="#post-title">[ back ]</a>
-    </p>
-    <ul>
-      {{ range .Params.revisions }}
-        <li><em>{{ .date }}</em> {{ .rev | safeHTML }}</li>
-      {{ end }}
-    </ul>
+    <hr/>
+    {{ partial "post/revisions/notice" . }}
+    {{ partial "post/revisions/details" . }}
+    <hr/>
   </blockquote>
+  {{ $.Scratch.Set "post-one-revisions-block" false }}
 {{ end }}

@@ -1,0 +1,19 @@
+{{ if $.Params.revisions }}
+  {{ if not ($.Scratch.Get "post-one-revisions-block") }}
+  <blockquote id="revisions-details" class="revisions">
+    <hr/>
+  {{ end }}
+    <ul>
+      {{ range $.Params.revisions }}
+        <li{{ if not ($.Scratch.Get "post-revisions-block") }} id="{{ .date }}"{{ end }}>
+          <em>{{ .date }}</em>: {{ .rev | markdownify }}
+          {{ if not ($.Scratch.Get "post-one-revisions-block") }}<a href="#revisions-notice">[ back ]</a>{{ end }}
+        </li>
+      {{ end }}
+    </ul>
+  {{ if not ($.Scratch.Get "post-one-revisions-block") }}
+    <hr/>
+  </blockquote>
+  {{ end }}
+{{ end }}
+

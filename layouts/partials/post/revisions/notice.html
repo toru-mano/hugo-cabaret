@@ -1,0 +1,21 @@
+{{ if $.Params.revisions }}
+  {{ if not ($.Scratch.Get "post-one-revisions-block") }}
+  <blockquote id="revisions-notice" class="revisions">
+    <hr/>
+  {{ end }}
+    <p>
+      This article was modified from its original published form. The most
+      recent modification was on
+      {{ if not ($.Scratch.Get "post-one-revisions-block") }}
+        {{ .Scratch.Set "link" "#" }}
+        {{ .Scratch.Add "link" (index $.Params.revisions 0).date }}
+        <a href="{{ .Scratch.Get "link" }}"><strong>{{ (index .Params.revisions 0).date }}</strong>.</a>
+      {{ else }}
+        <strong>{{ (index .Params.revisions 0).date }}</strong>.
+      {{ end }}
+    </p>
+  {{ if not ($.Scratch.Get "post-one-revisions-block") }}
+    <hr/>
+  </blockquote>
+  {{ end }}
+{{ end }}
