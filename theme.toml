@@ -3,8 +3,10 @@ description = "A clean, responsive, opinionated, template with red accents, used
 license = "Apache 2.0"
 licenselink = "https://github.com/halostatue/hugo-cabaret/blob/master/LICENSE.md"
 source_repo = "http://github.com/halostatue/hugo-cabaret"
+version = "1.4"
 tags = ["cabaret", "redlounge", "red", "raleway", "libre baskerville", "blog", "gallery"]
-features = ["blog", "gallery"]
+features = ["blog", "gallery", "series", "composable" ]
+min_version = 0.14
 
 [author]
     name = "Austin Ziegler"
