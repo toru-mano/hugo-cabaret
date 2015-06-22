@@ -1,3 +1,1 @@
-{{ if .Site.Params.categoriescss }}
-<link rel="stylesheet" type="text/css" href="{{ .Site.Params.categoriescss }}">
-{{ end }}
+{{ $categoriesCSS := or (or ($.Site.Data.layout.categoriescss) ($.Site.Data.cabaret.layout.categoriescss)) $.Site.Params.categoriescss }}{{ if $categoriesCSS }}<link rel="stylesheet" type="text/css" href="{{ $categoriesCSS | relURL }}">{{ end }}

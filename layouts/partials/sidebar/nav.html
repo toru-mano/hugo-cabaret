@@ -1,6 +1,6 @@
 <nav class="nav">
   <ul class="nav-list">
-    {{ range .Site.Menus.main }}
+    {{ range $.Site.Menus.main }}
     <li class="nav-item"><span class="nav-item-separator">//</span><a href="{{ .URL }}">{{ .Name }}</a></li>
     {{ end }}
     {{ partial "sidebar/nav/extra" . }}

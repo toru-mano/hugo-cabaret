@@ -1,5 +1,5 @@
 <!-- Depends on a Site Param hash of google_analytics with two keys: .tracking_id and .anonymize_ip -->
-{{ with .Site.Params.google_analytics }}
+{{ with $.Site.Params.google_analytics }}
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '{{ .tracking_id }}']);

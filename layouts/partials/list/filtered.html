@@ -1,8 +1,8 @@
-{{ $field := .Site.Params.filter.field }}
-{{ $value := .Site.Params.filter.value }}
-{{ $postLimit := .Site.Params.filter.postLimit }}
-{{ $fullPostLimit := .Site.Params.filter.fullPostLimit }}
-{{ $allPostLimit := .Site.Params.filter.allPostLimit }}
+{{ $field := $.Site.Params.filter.field }}
+{{ $value := $.Site.Params.filter.value }}
+{{ $postLimit := $.Site.Params.filter.postLimit }}
+{{ $fullPostLimit := $.Site.Params.filter.fullPostLimit }}
+{{ $allPostLimit := $.Site.Params.filter.allPostLimit }}
 {{ $filter := where .Data.Pages $field $value }}
 {{ $count := len $filter }}
 {{ range $index, $page := where .Data.Pages $field $value }}

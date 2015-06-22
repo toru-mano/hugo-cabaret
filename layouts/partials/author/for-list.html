@@ -1,7 +1,7 @@
 {{ if not .Params.noauthor }}
 {{ if and (isset .Params "author") (isset .Params.author "name") }}
 By <a class="post-author" {{ if isset .Params.author "link" }}href="{{ .Params.author.link }}"{{ end }}>{{ .Params.author.name }}</a>
-{{ else if and (not .Site.Author.noauthor) (isset .Site.Author "name") }}
-By <a class="post-author" {{ if isset .Site.Author "link" }}href="{{ .Site.Author.link }}"{{ end }}>{{ .Site.Author.name }}</a>
+{{ else if and (not $.Site.Author.noauthor) (isset $.Site.Author "name") }}
+By <a class="post-author" {{ if isset $.Site.Author "link" }}href="{{ $.Site.Author.link }}"{{ end }}>{{ $.Site.Author.name }}</a>
 {{ end }}
 {{ end }}

@@ -1,8 +1,9 @@
-{{ if .Site.Params.social }}
+{{ $social := or ($.Site.Data.social) ($.Site.Params.social) }}
+{{ if $social }}
 <div class="social-buttons">
-  {{ range .Site.Params.social }}
+  {{ range $social }}
     {{ if and (isset . "url") (isset . "icon") }}
-    <a href="{{ .url }}"><i class="fa lg fa-{{ .icon }}"></i></a>
+      <a href="{{ .url }}"><i class="fa lg fa-{{ .icon }}"></i></a>
     {{ end }}
   {{ end }}
 </div>

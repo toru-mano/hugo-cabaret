@@ -1,6 +1,10 @@
-<meta property="og:title" content="{{ if .Params.og.title }}{{ .Params.og.title }}{{ else }}{{ .Title }}{{ end }}" />
-<meta property="og:description" content="{{ if .Params.og.description }}{{ .Params.og.description }}{{ else }}{{ .Description }}{{ end }}" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
+{{ if not ($.Scratch.Get "is404") }}
+<meta property="og:title" content="{{ or .Params.og.title .Title }}" />
+{{ if or (.Params.og.description .Description) }}
+<meta property="og:description" content="{{ or .Params.og.description .Description }}" />
+{{ end }}
+<meta property="og:type" content="{{ or (or ($.Site.Data.og.type) ($.Site.Data.cabaret.og.type)) "website" }}" />
+<meta property="og:locale" content="{{ $.Scratch.Get "lang" }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
-{{ if .Params.og.image }}<meta property="og:image" content="{{ .Params.og.image }}" />{{ end }}
+{{ with .Params.og.image }}<meta property="og:image" content="{{ . }}" />{{ end }}
+{{ end }}

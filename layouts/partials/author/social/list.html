@@ -1,6 +1,5 @@
 {{ if not .Params.noauthor }}
-  {{ $site := .Site }}
-  {{ $social := .Site.Params.social }}
+  {{ $social := $.Site.Params.social }}
   {{ if isset .Params.author "social" }}
     {{ range .Params.author.social }}
       {{ partial "author/social/site" . }}
@@ -13,8 +12,8 @@
         {{ end }}
       {{ end }}
     {{ end }}
-  {{ else if and (not .Site.Author.noauthor) (isset .Site.Author "social-sites") }}
-    {{ range $name := index $site.Author "social-sites" }}
+  {{ else if and (not $.Site.Author.noauthor) (isset $.Site.Author "social-sites") }}
+    {{ range $name := index $.Site.Author "social-sites" }}
       {{ range $social }}
         {{ if eq $name .site }}
           {{ partial "author/social/site" . }}

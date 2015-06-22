@@ -1,3 +1,4 @@
+{{ $.Scratch.Set "is404" true }}
 {{ partial "doctype" . }}
 <head>
   {{ partial "head" . }}
@@ -24,3 +25,4 @@
   {{ partial "bodyend" . }}
 </body>
 </html>
+{{ $.Scratch.Set "is404" false }}

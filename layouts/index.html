@@ -10,10 +10,10 @@
       {{ partial "list/top" . }}
 
       <div class="posts">
-        {{ if .Site.Params.filter }}
+        {{ if $.Site.Params.filter }}
           {{ partial "list/filtered" . }}
         {{ else }}
-          {{ range .Site.Recent }}
+          {{ range $.Site.Recent }}
             {{ .Render "post/summary" }}
           {{ end }}
         {{ end }}

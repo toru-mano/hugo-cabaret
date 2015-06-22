@@ -1,3 +1,6 @@
+{{ $title := or (and ($.Scratch.Get "is404") (or ($.Site.Data.layout.title404) ($.Site.Data.cabaret.layout.title404))) .Title }}
+{{ $separator := or ($.Site.Data.layout.title.separator) ($.Site.Data.cabaret.layout.title.separator) }}
+
 <title>
-  {{ .Title }}{{ if ne .Title .Site.Title }} // {{ .Site.Title }}{{ end }}
+  {{ $title }}{{ if ne $title $.Site.Title }}{{ $separator }}{{ $.Site.Title }}{{ end }}
 </title>

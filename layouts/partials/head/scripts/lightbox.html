@@ -1,5 +1,5 @@
 {{ if .Params.lightbox }}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}/css/lightbox.css">
-<script src="{{ .Site.BaseURL }}/js/lightbox.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ "css/lightbox.css" | relURL }}">
+<script src="{{ "js/lightbox.min.js" | relURL }}"></script>
 {{ end }}

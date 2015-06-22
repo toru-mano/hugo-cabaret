@@ -1,4 +1,4 @@
-Copyright 2014 Austin Ziegler
+Copyright 2014–2015 Austin Ziegler
 
 Based on https://github.com/tmaiaroto/hugo-redlounge, copyright 2014 Tom
 Maiaroto.
