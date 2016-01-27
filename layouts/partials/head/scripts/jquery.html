@@ -1,0 +1,6 @@
+{{ if not $.Scratch.Get "loaded-jQuery" }}
+<script
+  src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js" async>
+</script>
+{{ $.Scratch.Set "loaded-jQuery" true }}
+{{ end }}
