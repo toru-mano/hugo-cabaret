@@ -1,8 +1,9 @@
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+{{ partial "head/meta/charset" . }}
+{{ partial "head/meta/viewport" . }}
 
 {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
 {{ if len .Keywords }}<meta name="keywords" content="{{ delimit .Keywords "," }}">{{ end }}
 {{ with .Params.author }}<meta name="author" content="{{ . }}">{{ end }}
 
 {{ partial "head/meta/og" . }}
+{{ partial "head/meta/extra" . }}
