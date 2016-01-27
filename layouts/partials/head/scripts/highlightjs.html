@@ -1,7 +1,12 @@
 {{ $useHighlightJS := or (or (.Params.usehighlightjs) ($.Site.Data.layout.usehighlightjs)) ($.Site.Params.highlightjs) }}
 {{ if $useHighlightJS }}
   {{ $highlightJSStyle := or (or (or ($.Site.Data.layout.highlightjsstyle) ($.Site.Params.highlightjsstyle)) ($.Site.Data.cabaret.layout.highlightjsstyle)) "tomorrow-night-bright" }}
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/{{ $highlightJSStyle }}.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script
+    src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"
+    async
+    onload="hljs.initHighlighting();">
+  </script>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/{{ $highlightJSStyle }}.min.css">
 {{ end }}
