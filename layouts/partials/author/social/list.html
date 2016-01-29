@@ -1,5 +1,5 @@
 {{ if not .Params.noauthor }}
-  {{ $social := $.Site.Params.social }}
+  {{ $social := or ($.Site.Data.social.sites) ($.Site.Params.social) }}
   {{ if isset .Params.author "social" }}
     {{ range .Params.author.social }}
       {{ partial "author/social/site" . }}

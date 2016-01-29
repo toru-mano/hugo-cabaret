@@ -3,7 +3,7 @@
 
 {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
 {{ if len .Keywords }}<meta name="keywords" content="{{ delimit .Keywords "," }}">{{ end }}
-{{ with .Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+{{ with .Param "author" }}<meta name="author" content="{{ . }}">{{ end }}
 
 {{ partial "head/meta/og" . }}
 {{ partial "head/meta/extra" . }}

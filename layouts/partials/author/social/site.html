@@ -1,4 +1,4 @@
-{{ if isset . "icon" }}
+{{ if .icon }}
 <span class="post-author-social post-author-{{ .site | lower }}">
   <a href="{{ .author.url | relURL }}" target="_blank"><i class="fa fa-{{ .icon }}"></i></a>
 </span>

@@ -1,4 +1,4 @@
-{{ if not .Params.nocomment }}
+{{ if not (.Param "nocomment") }}
   {{ if isset $.Site.Params "disqusShortname" }}
     {{ template "_internal/disqus.html" . }}
   {{ else if isset $.Site.Params "discourseURL" }}

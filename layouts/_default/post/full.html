@@ -3,9 +3,7 @@
   <a href="{{ .RelPermalink }}">{{ .Title }}</a>
 </h1>
 {{ partial "code/badges" . }}
-{{ if .Params.subtitle }}
-<h3 class="post-subtitle">{{ .Params.subtitle }}</h3>
-{{ end }}
+{{ with .Params.subtitle }}<h3 class="post-subtitle">{{ . }}</h3>{{ end }}
 
 {{ partial "post/date" . }}
 {{ partial "author/for-post" . }}
