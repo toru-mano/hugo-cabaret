@@ -1,9 +1,9 @@
-{{ partial "head/meta/charset" . }}
-{{ partial "head/meta/viewport" . }}
-
-{{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
-{{ if len .Keywords }}<meta name="keywords" content="{{ delimit .Keywords "," }}">{{ end }}
-{{ with .Param "author" }}<meta name="author" content="{{ . }}">{{ end }}
-
-{{ partial "head/meta/og" . }}
-{{ partial "head/meta/extra" . }}
+{{- partial "head/meta/charset" . }}
+{{- partial "head/meta/http-equiv" . }}
+{{- partial "head/meta/viewport" . }}
+{{- partial "head/meta/generator" . }}
+{{- with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+{{- with .Param "author" }}<meta name="author" content="{{ . }}">{{ end }}
+{{- partial "head/meta/og" . }}
+{{- partial "head/meta/google-site-verification" . }}
+{{- partial "head/meta/extra" . }}

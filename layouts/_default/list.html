@@ -1,25 +1,26 @@
-{{ partial "doctype" . }}
+{{- partial "config" . -}}
+{{- partial "doctype" . -}}
 <head>
-  {{ partial "head" . }}
+  {{- partial "head" . -}}
 </head>
 <body>
   <div id="layout" class="pure-g">
-    {{ partial "sidebar" . }}
+    {{- partial "sidebar" . -}}
 
     <div id="top" class="content pure-u-1 pure-u-md-3-4">
-      {{ partial "list/top" . }}
+      {{- partial "list/top" . -}}
 
-      <h1 class="post-title">{{ .Title }}</h1>
+      <h1 class="post-title">{{- .Title -}}</h1>
 
       <div class="posts">
-        {{ range .Data.Pages }}
-        {{ .Render "post/summary" }}
-        {{ end }}
+        {{- range .Data.Pages -}}
+        {{- .Render "post/summary" -}}
+        {{- end -}}
       </div>
 
-      {{ partial "footer" . }}
+      {{- partial "footer" . -}}
     </div>
   </div>
-  {{ partial "bodyend" . }}
+  {{- partial "bodyend" . -}}
 </body>
 </html>

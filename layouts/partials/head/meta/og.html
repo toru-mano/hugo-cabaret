@@ -1,10 +1,22 @@
-{{ if not ($.Scratch.Get "is404") }}
-<meta property="og:title" content="{{ or .Params.og.title .Title }}" />
-{{ if or (.Params.og.description .Description) }}
-<meta property="og:description" content="{{ or .Params.og.description .Description }}" />
-{{ end }}
-<meta property="og:type" content="{{ or (or ($.Site.Data.og.type) ($.Site.Data.cabaret.og.type)) "website" }}" />
-<meta property="og:locale" content="{{ $.Scratch.Get "lang" }}" />
-<meta property="og:url" content="{{ .Permalink }}" />
-{{ with .Params.og.image }}<meta property="og:image" content="{{ . }}" />{{ end }}
-{{ end }}
+{{- if not ($.Scratch.Get "is404?") -}}
+<meta property="og:title" content="{{ or .Params.og.title ($.Scratch.Get "@title") }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ $.Site.Title }}">
+{{ with or .Params.og.description .Description -}}
+<meta property="og:description" content="{{ . }}">
+{{- end -}}
+{{- $type := or $.Site.Data.cabaret.og.type "website" -}}
+{{- $type := or $.Site.Data.og.type $type -}}
+{{- $type := or .Params.og.type $type -}}
+<meta property="og:type" content="{{ $type }}">
+{{ with $.Scratch.Get "lang" }}<meta property="og:locale" content="{{ . }}">{{ end }}
+{{- $image := or $.Site.Data.og.image $.Site.Data.cabaret.og.image -}}
+{{- $image := or .Params.og.image $image -}}
+{{ with $image }}<meta property="og:image" content="{{ . }}">{{ end }}
+{{- $author:= or .Params.og.author $.Site.Data.og.author -}}
+{{- $author:= or (.Param "author") $author -}}
+{{- with $author -}}<meta property="article:author" content="{{ . }}">{{- end -}}
+{{- end -}}
+{{- with or .Params.fbAppId $.Site.Data.fbAppId -}}
+<meta property="fb:app_id" content="{{ . }}">
+{{- end -}}

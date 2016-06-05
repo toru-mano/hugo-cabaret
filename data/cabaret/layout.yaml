@@ -1,3 +1,17 @@
 ---
 title:
   separator: " // "
+icons:
+  - href: '/favicon.png'
+    size: 32x32
+apple_touch:
+  precomposed_icons:
+    - href: '/apple-touch-icon-144-precomposed.png'
+      size: 144x144
+google_web_fonts:
+  config:
+    google:
+      families:
+        - 'Lato:300,400,300italic,400italic:latin'
+        - 'Josefin+Sans:400,700,400italic,700italic:latin'
+        - 'Source+Code+Pro:400,700:latin'

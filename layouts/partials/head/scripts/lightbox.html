@@ -1,11 +1,5 @@
-{{ if .Params.lightbox }}
-{{ partial "head/scripts/jquery" . }}
-<script
-  src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"
-  async>
-</script>
-<link
-  rel="stylesheet"
-  type="text/css"
-  src="cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
-{{ end }}
+{{- if .Params.lightbox -}}
+{{- partial "head/scripts/jquery" . -}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js" async></script>
+{{- partial "_stylesheet" "cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css" -}}
+{{- end -}}

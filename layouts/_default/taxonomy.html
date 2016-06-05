@@ -1,45 +1,46 @@
-{{ partial "doctype" . }}
+{{- partial "config" . -}}
+{{- partial "doctype" . -}}
 <head>
-  {{ partial "head" . }}
+  {{- partial "head" . -}}
 </head>
 <body>
   <div id="layout" class="pure-g">
-    {{ partial "sidebar" . }}
+    {{- partial "sidebar" . -}}
 
     <div id="top" class="content pure-u-1 pure-u-md-3-4">
-      {{ partial "list/top" . }}
+      {{- partial "list/top" . -}}
 
-      {{ $root := . }}
-      {{ $title := (.Title | urlize | title) }}
-      {{ $page := (index .Data.Pages 0) }}
-      {{ $plural := .Data.Plural }}
-      {{ $singular := .Data.Singular }}
-      {{ range $taxonomy, $value := .Data }}
-        {{ if eq $taxonomy $singular }}
-          {{ range (index $page.Params $plural) }}
-            {{ if eq $title (. | urlize | title) }}
-              <h1 class="post-title">{{ . }}</h1>
-              {{ $desc := printf "%s-desc" $taxonomy }}
-              {{ $desctax := index $root.Site.Taxonomies $desc }}
-              {{ $descpages := index $desctax (. | urlize) }}
-              {{ if len $descpages }}
-                {{ $descpage := index $descpages 0 }}
-                <span class="term-desc">{{ $descpage.Page.Content }}</span>
-              {{ end }}
-            {{ end }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
+      {{- $root := . -}}
+      {{- $title := (.Title | urlize | title) -}}
+      {{- $page := (index .Data.Pages 0) -}}
+      {{- $plural := .Data.Plural -}}
+      {{- $singular := .Data.Singular -}}
+      {{- range $taxonomy, $value := .Data -}}
+        {{- if eq $taxonomy $singular -}}
+          {{- range (index $page.Params $plural) -}}
+            {{- if eq $title (. | urlize | title) -}}
+              <h1 class="post-title">{{- . -}}</h1>
+              {{- $desc := printf "%s-desc" $taxonomy -}}
+              {{- $desctax := index $root.Site.Taxonomies $desc -}}
+              {{- $descpages := index $desctax (. | urlize) -}}
+              {{- if len $descpages -}}
+                {{- $descpage := index $descpages 0 -}}
+                <span class="term-desc">{{- $descpage.Page.Content -}}</span>
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
 
       <ul>
-        {{ range .Data.Pages }}
+        {{- range .Data.Pages -}}
         <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
-        {{ end }}
+        {{- end -}}
       </ul>
 
-      {{ partial "footer" . }}
+      {{- partial "footer" . -}}
     </div>
   </div>
-  {{ partial "bodyend" . }}
+  {{- partial "bodyend" . -}}
 </body>
 </html>

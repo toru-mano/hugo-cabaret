@@ -1,24 +1,24 @@
-{{ partial "author/avatar" . }}
+{{- partial "author/avatar" . -}}
 <h1 class="post-title">
   <a href="{{ .RelPermalink }}">{{ .Title }}</a>
 </h1>
-{{ partial "code/badges" . }}
-{{ with .Params.subtitle }}<h3 class="post-subtitle">{{ . }}</h3>{{ end }}
+{{- partial "code/badges" . -}}
+{{- with .Params.subtitle }}<h3 class="post-subtitle">{{ . }}</h3>{{ end -}}
 
-{{ partial "post/date" . }}
-{{ partial "author/for-post" . }}
-{{ partial "author/social/list" . }}
-{{ partial "post/categories" . }}
-{{ partial "socialsharing/buttons" . }}
-{{ partial "post/bannerinline" . }}
+{{- partial "post/date" . -}}
+{{- partial "author/for-post" . -}}
+{{- partial "author/social/list" . -}}
+{{- partial "post/categories" . -}}
+{{- partial "socialsharing/buttons" . -}}
+{{- partial "post/bannerinline" . -}}
 
-{{ partial "post/revisions/notice" . }}
+{{- partial "post/revisions/notice" . -}}
 
-{{ partial "post/series" . }}
+{{- partial "post/series" . -}}
 
-{{ .Content }}
+{{- .Content -}}
 
-{{ partial "post/revisions/details" . }}
+{{- partial "post/revisions/details" . -}}
 
-{{ partial "socialsharing/buttons" . }}
-{{ partial "post/tag/list" . }}
+{{- partial "socialsharing/buttons" . -}}
+{{- partial "post/tag/list" . -}}

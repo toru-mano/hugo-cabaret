@@ -1,0 +1,3 @@
+{{- if (or $.Params.httpEquiv.clearType (or $.Site.Params.httpEquiv.clearType $.Site.Data.httpEquiv.clearType)) -}}
+<meta http-equiv="cleartype" content="on">
+{{- end -}}

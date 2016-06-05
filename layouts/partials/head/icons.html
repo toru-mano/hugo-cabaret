@@ -1,2 +1,5 @@
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ "/apple-touch-icon-144-precomposed.png" | relURL }}">
-<link rel="shortcut icon" href="{{ "/favicon.png" | relURL }}">
+{{- $icons := or $.Site.Data.layout.icons $.Site.Data.cabaret.layout.icons -}}
+{{- $icons := or $.Site.Params.icons $icons -}}
+{{ partial "head/icons/_link" (dict "Icons" $icons) }}
+{{- partial "head/icons/apple-touch" . -}}
+{{- partial "head/icons/extra" . -}}

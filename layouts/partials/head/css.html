@@ -1,5 +1,5 @@
-{{ partial "head/css/pure" . }}
-<link rel="stylesheet" href="{{ "/css/cabaret.css" | relURL }}">
-{{ partial "head/css/fonts" . }}
-{{ partial "head/css/categories" . }}
-{{ partial "head/css/extra" . }}
+{{- partial "head/css/pure" . -}}
+{{ partial "_stylesheet" ("/css/cabaret.css" | relURL ) }}
+{{- partial "head/css/fonts" . -}}
+{{- partial "head/css/categories" . -}}
+{{- partial "head/css/extra" . -}}

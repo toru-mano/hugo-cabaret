@@ -1,0 +1,3 @@
+{{- with (or $.Site.Params.ContentSecurityPolicy $.Site.Data.ContentSecurityPolicy) -}}
+<meta http-equiv="Content-Security-Policy" content="{{ . }}">
+{{- end -}}

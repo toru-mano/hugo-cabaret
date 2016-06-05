@@ -1,20 +1,20 @@
-{{ if .Truncated }}
+{{- if .Truncated -}}
 <section class="post">
   <header class="post-header">
-    {{ partial "author/avatar" . }}
+    {{- partial "author/avatar" . -}}
     <h1 class="post-title">
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </h1>
   </header>
-  {{ partial "list/post/meta" . }}
+  {{- partial "list/post/meta" . -}}
   <article class="post-summary">
-    {{ .Summary }}
+    {{- .Summary -}}
   </article>
-  {{ partial "post/series" . }}
+  {{- partial "post/series" . -}}
   <div class="read-more-link">
     <a href="{{ .RelPermalink }}"><span class="read-more-slashes">//</span>Read More…</a>
   </div>
 </section>
-{{ else }}
-  {{ .Render "post/full" }}
-{{ end }}
+{{- else -}}
+  {{- .Render "post/full" -}}
+{{- end -}}

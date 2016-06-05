@@ -1,0 +1,25 @@
+{{- if not $.Site.Data.layout.google_web_fonts.disabled -}}
+  {{- $config := $.Site.Data.layout.google_web_fonts.config -}}
+  {{- $config := or $config $.Site.Data.cabaret.layout.google_web_fonts.config -}}
+<script type="text/javascript">
+WebFontConfig = {
+  {{- range $name, $groups := $config -}}
+    {{ $name }}: {
+      {{- range $group, $fonts := $groups -}}
+        {{ $group }}: {{ $fonts }}
+      {{- end -}}
+    }
+  {{- end -}}
+};
+
+(function() {
+  var wf = document.createElement('script');
+  wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+  wf.type = 'text/javascript';
+  wf.async = 'true';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(wf, s);
+})();
+</script>
+{{- end -}}

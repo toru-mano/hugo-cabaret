@@ -1,0 +1,7 @@
+{{- $pager := $.Paginator -}}
+{{- if gt $pager.TotalPages 1 -}}
+  {{ with $pager.First }}<link href="{{ .URL }}" rel="first">{{ end }}
+  {{ with $pager.Prev }}<link href="{{ .URL }}" rel="previous">{{ end }}
+  {{ with $pager.Next }}<link href="{{ .URL }}" rel="next">{{ end }}
+  {{ with $pager.Last }}<link href="{{ .URL }}" rel="last">{{ end }}
+{{- end -}}

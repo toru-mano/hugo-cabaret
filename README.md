@@ -1,19 +1,18 @@
 # Cabaret
 
-Cabaret is an open-source Hugo theme originally based on [Red
-Lounge][redlounge], designed by Tom Maiaroto
-([@shift8creative][shift8creative]).
+Cabaret is an open-source Hugo theme originally based on [Red Lounge][],
+designed by Tom Maiaroto ([@shift8creative][]).
 
-He designed it to be responsive and clean. It uses [Pure.css][purecss] and
-contains a few web fonts from Google as well as [Font Awesome
-icons][fontawesome]. It’s reasonably simple, but has a lot of flexibility in
-terms of typography and design elements. It's also quite configurable as it
-has a few variables to change the appearance and features of the pages. By
-default, excess features (and JavaScript) are not included.
+He designed it to be responsive and clean. It uses [Pure.css][] and contains a
+few web fonts from Google as well as [Font Awesome icons][]. It’s reasonably
+simple, but has a lot of flexibility in terms of typography and design
+elements. It's also quite configurable as it has a few variables to change the
+appearance and features of the pages. By default, excess features (and
+JavaScript) are not included.
 
-I’m modifying it because I have different opinions on how some of these
-options should be implemented, and I’m going to make a few changes on how some
-of the templates and options are composed for even more customizability.
+I’m modifying it because I have different opinions on how some of these options
+should be implemented, and I’m going to make a few changes on how some of the
+templates and options are composed for even more customizability.
 
 ## Configuration and Options
 
@@ -24,89 +23,115 @@ example, in `config.toml`:
 
 ```
 [params]
-	sidebartitle = "My Site"
-	sidebartagline = "Is super awesome"
+  sidebartitle = "My Site"
+  sidebartagline = "Is super awesome"
 ```
 
-Neither the title nor tagline will be shown if not set. You will want to keep these lines short since there's limited space.
-Alternatively you could add custom HTML using the `sidebarheader.html` partial and keep those values empty strings.
+Neither the title nor tagline will be shown if not set. You will want to keep
+these lines short since there's limited space. Alternatively you could add
+custom HTML using the `sidebarheader.html` partial and keep those values empty
+strings.
 
 ### Menus
 
-There are a few menus this theme allows you to define (all optional) in your main config.
+There are a few menus this theme allows you to define (all optional) in your
+main config.
 
-Main - This menu is pretty basic and goes on the left panel under the site title and description. It contains red markers to separate items and call attention to the
-fact that it is more important than the other lists/menus that you may have on your site. It is optional, but always shows a link to the home page.
-This would be a good place to link to your various sections.
+Main - This menu is pretty basic and goes on the left panel under the site
+title and description. It contains red markers to separate items and call
+attention to the fact that it is more important than the other lists/menus that
+you may have on your site. It is optional, but always shows a link to the home
+page. This would be a good place to link to your various sections.
 
 ```
 [[menu.main]]
-    name = "Blog"
-    url = "/posts"
+  name = "Blog"
+  url = "/posts"
 ```
 
 
-Social - This menu goes underneath the main menu and was originally designed to contain links out to social media accounts, RSS, etc. making use of Font Awesome.
-However, you can use it for whatever you want. Just keep in mind space is limited here on the left panel.
+Social - This menu goes underneath the main menu and was originally designed to
+contain links out to social media accounts, RSS, etc. making use of Font
+Awesome. However, you can use it for whatever you want. Just keep in mind space
+is limited here on the left panel.
 
 ```
 [[menu.social]]
-	pre = "<i class='fa fa-twitter'></i>"
-    url = "http://www.twitter.com/shift8creative"
-    identifier = "twitter"
+  pre = "<i class='fa fa-twitter'></i>"
+  url = "http://www.twitter.com/shift8creative"
+  identifier = "twitter"
 ```
 
-Footer - The footer menu might also contain links to social media accounts...It's up to you. It appears right above the copyright notice at the bottom of each page.
-This menu is simply plain text links centered and they are gray to match the footer. So there's less attention being drawn here. Perhaps good for notices, terms of service, etc.
+Footer - The footer menu might also contain links to social media
+accounts…It's up to you. It appears right above the copyright notice at the
+bottom of each page. This menu is simply plain text links centered and they are
+gray to match the footer. So there's less attention being drawn here. Perhaps
+good for notices, terms of service, etc.
 
 ```
 [[menu.footer]]
-    name = "Blog"
-    url = "/posts"
+  name = "Blog"
+  url = "/posts"
 ```
 
 ### Categories
 
 Some assembly required here.
 
-`.Params.categories` coming from front-matter are displayed as tags on list pages with boxes. By default they are all going to be gray with white text. The coloring is up to you.
+`.Params.categories` coming from front-matter are displayed as tags on list
+pages with boxes. By default they are all going to be gray with white text. The
+coloring is up to you.
 
-Each label will have the following class: `class="post-category post-category-{{ . | urlize }}"`
+Each label will have the following class: `class="post-category
+post-category-{{ . | urlize }}"`
 
-Note the name is going to be urlized. So for example: `post-category-technology` or `post-category-golang` and so on. This allows you to create your own CSS around the
-categories you end up defining. You can then set the background color to be something specific and then all instances of that category label will match.
+Note the name is going to be urlized. So for example:
+`post-category-technology` or `post-category-golang` and so on. This allows you
+to create your own CSS around the categories you end up defining. You can then
+set the background color to be something specific and then all instances of
+that category label will match.
 
-You can easily include a categories CSS file, without modifying template partials, by using the site config params. Something like the following:
+You can easily include a categories CSS file, without modifying template
+partials, by using the site config params. Something like the following:
 
 ```
 [params]
 	categoriescss = "/css/my-categories.css"
 ```
 
-This will be included in the header.html file before headend.html partial, so you can still include additional code in that partial afterward.
+This will be included in the header.html file before headend.html partial, so
+you can still include additional code in that partial afterward.
 
 ### Comments
 
-Comments use Disqus, so the main config needs to define `disqusShortname` like normal. However, each page can disable comments from appearing with front matter. Simply set
-`nocomment = true` and they will be hidden.
+Comments use Disqus, so the main config needs to define `disqusShortname` like
+normal. However, each page can disable comments from appearing with front
+matter. Simply set `nocomment = true` and they will be hidden.
 
 ### Lightbox
 
-Lightbox is included with the theme but won't be available for use (not even linked in the HTML) unless you enable it. This way it stays out of the way and saves on bandwidth.
-Should you decide you want to use it, simply add to your front-matter: `lightbox = true` and then in your markdown you'll need add links with a `data-lightbox` attribute.
-Markdown wants to add titles when you add quotes so the syntax is a little weird. Alternatively, you can use HTML (which is likely easier in this case). So the following should
-use images in your `static` directory:
+Lightbox is included with the theme but won't be available for use (not even
+linked in the HTML) unless you enable it. This way it stays out of the way and
+saves on bandwidth. Should you decide you want to use it, simply add to your
+front-matter: `lightbox = true` and then in your markdown you'll need add links
+with a `data-lightbox` attribute. Markdown wants to add titles when you add
+quotes so the syntax is a little weird. Alternatively, you can use HTML (which
+is likely easier in this case). So the following should use images in your
+`static` directory:
 
 ```
 <a href="/image.jpg" title="" data-lightbox="set1" data-title="This is my caption"><img src="/image-thumbnail.jpg" alt=""></a>
 ```
 
-Also note that Lightbox requires jQuery, so turning this on for a page or archetype will also link jQuery in the head section of your pages from Google's CDN.
+Also note that Lightbox requires jQuery, so turning this on for a page or
+archetype will also link jQuery in the head section of your pages from Google's
+CDN.
 
 ### Hiding & Showing Things
 
-Comments can be hidden on a per page basis with `nocomment = true` but there's also some other things that can be hidden. Sometimes simply by not defining them, other times
-by explicitly setting variables. They are as follows:
+Comments can be hidden on a per page basis with `nocomment = true` but there's
+also some other things that can be hidden. Sometimes simply by not defining
+them, other times by explicitly setting variables. They are as follows:
 
  - `nodate = true` Hides the date on a page
  - `noauthor = true` Hides the author (which may simply be defined per page, but also could be set higher up in the config, so this overrides)
@@ -155,7 +180,7 @@ There are a few partials being used so that key areas can be easily overwritten.
  - `footer.html` The footer
  - `bodyend.html` Right before `</body>` (within list.html, single.html, and index.html - be sure to include it when/if overwriting with your own index.html)
 
- [redlounge]: https://github.com/tmaiaroto/hugo-redlounge
- [shift8creative]: https://www.twitter.com/shift8creative
- [purecss]: http://purecss.io/
- [fontawesome]: https://fortawesome.github.io/Font-Awesome/
+ [Red Lounge]: https://github.com/tmaiaroto/hugo-redlounge
+ [@shift8creative]: https://www.twitter.com/shift8creative
+ [Pure.css]: http://purecss.io/
+ [Font Awesome icons]: https://fortawesome.github.io/Font-Awesome/

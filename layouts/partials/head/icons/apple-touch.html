@@ -1,0 +1,7 @@
+{{- $apple_touch := or $.Site.Data.layout.apple_touch $.Site.Data.cabaret.layout.apple_touch -}}
+{{- with $apple_touch.icons -}}
+{{ partial "head/icons/_link" (dict "Rel" "apple-touch-icon" "Icons" .) }}
+{{- end -}}
+{{- with $apple_touch.precomposed_icons -}}
+{{ partial "head/icons/_link" (dict "Rel" "apple-touch-icon-precomposed" "Icons" .) }}
+{{- end -}}

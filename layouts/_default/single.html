@@ -1,32 +1,33 @@
-{{ partial "doctype" . }}
+{{- partial "config" . -}}
+{{- partial "doctype" . -}}
 <head>
-  {{ partial "head" . }}
+  {{- partial "head" . -}}
 </head>
 <body>
-  {{ partial "totop/marker" . }}
+  {{- partial "totop/marker" . -}}
 
   <div id="layout" class="pure-g">
-    {{ partial "sidebar" . }}
+    {{- partial "sidebar" . -}}
 
     <div id="top" class="content pure-u-1 pure-u-md-3-4">
-      {{ partial "single/top" . }}
+      {{- partial "single/top" . -}}
 
-      {{ partial "post/toc" . }}
+      {{- partial "post/toc" . -}}
 
       <section class="post">
-        {{ .Render "post/full" }}
-        {{ partial "post/paging" . }}
+        {{- .Render "post/full" -}}
+        {{- partial "post/paging" . -}}
       </section>
 
-      {{ partial "post/comment" . }}
+      {{- partial "post/comment" . -}}
         
-      {{ partial "footer" . }}
+      {{- partial "footer" . -}}
     </div>
   </div>
-  {{ partial "totop/script" . }}
+  {{- partial "totop/script" . -}}
 
-  {{ partial "socialsharing/script" . }}
+  {{- partial "socialsharing/script" . -}}
 
-  {{ partial "bodyend" . }}
+  {{- partial "bodyend" . -}}
 </body>
 </html>

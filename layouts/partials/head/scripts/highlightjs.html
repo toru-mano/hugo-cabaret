@@ -1,13 +1,9 @@
-{{ $useHighlightJS := or (.Param "usehighlightjs") $.Site.Data.layout.usehighlightjs }}
-{{ if $useHighlightJS }}
-  {{ $highlightJSStyle := or (or (or (.Param "highlightjsstyle") $.Site.Data.layout.highlightjsstyle) $.Site.Data.cabaret.layout.highlightjsstyle) "tomorrow-night-bright" }}
-  <script
-    src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"
+{{- $useHighlightJS := or (.Param "usehighlightjs") $.Site.Data.layout.usehighlightjs -}}
+{{- if $useHighlightJS -}}
+  {{- $highlightJSStyle := or (or (or (.Param "highlightjsstyle") $.Site.Data.layout.highlightjsstyle) $.Site.Data.cabaret.layout.highlightjsstyle) "tomorrow-night-bright" -}}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"
     async
     onload="hljs.initHighlighting();">
   </script>
-
-  <link
-    rel="stylesheet"
-    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/{{ $highlightJSStyle }}.min.css">
-{{ end }}
+  {{ partial "_stylesheet" (printf "cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/%v.min.css" $highlightJSStyle) }}
+{{- end -}}

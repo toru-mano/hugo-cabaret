@@ -1,0 +1,3 @@
+{{- with (or (or $.Site.Params.XUaCompatible $.Site.Data.XUaCompatible) "ie=edge") -}}
+<meta http-equiv="x-ua-compatible" content="{{ . }}">
+{{- end -}}

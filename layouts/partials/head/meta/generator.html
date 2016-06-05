@@ -1,0 +1,12 @@
+{{- if .Hugo.CommitHash -}}
+  {{- if .Hugo.BuildDate -}}
+    {{- $.Scratch.Set "hugoVersion" (printf "(%v, %v)" .Hugo.BuildDate .Hugo.CommitHash) }}
+  {{- else -}}
+    {{- $.Scratch.Set "hugoVersion" (printf "(%v)" .Hugo.CommitHash) }}
+  {{- end -}}
+  {{- $hugoVersion := $.Scratch.Get "hugoVersion" -}}
+  {{- $hugoVersion := (printf "Hugo %v %v" .Hugo.Version $hugoVersion) -}}
+  <meta name="generator" content="{{ $hugoVersion }}">
+{{- else -}}
+  {{- .Hugo.Generator -}}
+{{- end -}}
