@@ -1,0 +1,41 @@
+{{- partial "_config" . -}}
+{{- partial "doctype" . -}}
+<html lang="{{ $.Scratch.Get "@lang" }}">
+  <head>
+    {{- partial "_comment" (printf "context[%s]" ($.Scratch.Get "@context")) -}}
+    {{- partial "head" . -}}
+  </head>
+  <body>
+    {{- partial "totop/marker" . -}}
+    <div id="layout" class="pure-g">
+      {{- partial "sidebar" . -}}
+      <div id="top" class="content pure-u-1 pure-u-md-3-4">
+        {{- $partial_top := or ($.Scratch.Get "@partial/top") "list/top" -}}
+        {{- partial $partial_top . -}}
+        {{- $partial := $.Scratch.Get "@partial/full" }}
+        {{- if $partial -}}
+          {{- partial $partial . -}}
+        {{- else -}}
+          {{- if ne ($.Scratch.Get "@context") "index.html" -}}
+          <h1 class="post-title">{{- $.Scratch.Get "@title" -}}</h1>
+          {{- end -}}
+          <div class="posts">
+            {{- $partial := $.Scratch.Get "@partial/context" }}
+            {{- if $partial -}}
+              {{- partial $partial . -}}
+            {{- else if $.Site.Params.filter -}}
+              {{- partial "list/filtered" . -}}
+            {{- else -}}
+              {{- range $.Site.Recent -}}
+                {{- .Render "post/summary" -}}
+              {{- end -}}
+            {{- end -}}
+          </div>
+        {{- end -}}
+      </div>
+      {{- partial "footer" . -}}
+    </div>
+    {{- partial "totop/script" . -}}
+    {{- partial "bodyend" . -}}
+  </body>
+</html>

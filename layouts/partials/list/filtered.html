@@ -1,22 +1,22 @@
-{{ $field := $.Site.Params.filter.field }}
-{{ $value := $.Site.Params.filter.value }}
-{{ $postLimit := $.Site.Params.filter.postLimit }}
-{{ $fullPostLimit := $.Site.Params.filter.fullPostLimit }}
-{{ $allPostLimit := $.Site.Params.filter.allPostLimit }}
-{{ $filter := where .Data.Pages $field $value }}
-{{ $count := len $filter }}
-{{ range $index, $page := where .Data.Pages $field $value }}
-  {{ if and $postLimit (le $index $postLimit) }}
+{{- $field := or $.Site.Params.filter.field $.Site.Data.filter.field -}}
+{{- $value := or $.Site.Params.filter.value $.Site.Data.filter.value -}}
+{{- $postLimit := or $.Site.Params.filter.postLimit $.Site.Data.filter.postLimit -}}
+{{- $fullPostLimit := or $.Site.Params.filter.fullPostLimit $.Site.Data.filter.fullPostLimit -}}
+{{- $allPostLimit := or $.Site.Params.filter.allPostLimit $.Site.Data.filter.allPostLimit -}}
+{{- $filter := where .Data.Pages $field $value -}}
+{{- $count := len $filter -}}
+{{- range $index, $page := where .Data.Pages $field $value -}}
+  {{- if and $postLimit (le $index $postLimit) -}}
   <section class="post">
-    {{ if and $fullPostLimit (lt $index $fullPostLimit) }}
-      {{ .Render "post/full" }}
-    {{ else }}
-      {{ .Render "post/summary" }}
-    {{ end }}
+    {{- if and $fullPostLimit (lt $index $fullPostLimit) -}}
+      {{- .Render "post/full" -}}
+    {{- else -}}
+      {{- .Render "post/summary" -}}
+    {{- end -}}
   </section>
-  {{ else }}
-    {{ if or (and $allPostLimit (lt $index $allPostLimit)) (lt $index $count) }}
-      {{ .Render "post/title" }}
-    {{ end }}
-  {{ end }}
-{{ end }}
+  {{- else -}}
+    {{- if or (and $allPostLimit (lt $index $allPostLimit)) (lt $index $count) -}}
+      {{- .Render "post/title" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

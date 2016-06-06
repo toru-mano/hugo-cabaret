@@ -1,10 +1,10 @@
-{{ $social := or ($.Site.Data.social.sites) ($.Site.Params.social) }}
-{{ if $social }}
+{{- $social := or ($.Site.Data.social.sites) ($.Site.Params.social) -}}
+{{- if $social -}}
 <div class="social-buttons">
-  {{ range sort $social "weight" }}
-    {{ if and (.url) (.icon) }}
+  {{- range sort $social "weight" -}}
+    {{- if and (.url) (.icon) -}}
       <a href="{{ .url }}"><i class="fa lg fa-{{ .icon }}"></i></a>
-    {{ end }}
-  {{ end }}
+    {{- end -}}
+  {{- end -}}
 </div>
-{{ end }}
+{{- end -}}

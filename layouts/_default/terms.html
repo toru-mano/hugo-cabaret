@@ -1,48 +1,6 @@
-{{- partial "config" . -}}
-{{- partial "doctype" . -}}
-<head>
-  {{- partial "head" . -}}
-</head>
-<body>
-  <div id="layout" class="pure-g">
-    {{- partial "sidebar" . -}}
-
-    <div id="top" class="content pure-u-1 pure-u-md-3-4">
-      {{- partial "list/top" . -}}
-
-      {{- $taxonomyName := .Data.Plural -}}
-      {{- $description := printf "%s-desc" .Data.Singular -}}
-      {{- $taxonomyDescription := index $.Site.Taxonomies $description -}}
-
-      <h1 class="post-title">{{- ($taxonomyName | title) -}}</h1>
-
-      <dl>
-        {{- range $name, $pages := .Data.Terms -}}
-          {{- $page := index $pages 0 -}}
-          {{- $len := len $pages -}}
-          {{- range $friendly := index $page.Page.Params $taxonomyName -}}
-            {{- if eq ($friendly | urlize) $name -}}
-              <dt>
-                <a href="{{ (printf "/%s/%s" $taxonomyName $name) | relURL }}">{{ $friendly }}</a>
-                &nbsp;<span class="nav-item-separator">//</span>
-                {{- $len }} {{ if eq 1 $len }}entry{{ else }}entries{{ end -}}
-              </dt>
-            {{- end -}}
-          {{- end -}}
-
-          {{- $descPages := index $taxonomyDescription $name -}}
-          <dd>
-          {{- if len $descPages -}}
-            {{- $descPage := index $descPages 0 -}}
-            <span class="term-desc">{{- $descPage.Page.Content -}}</span>
-          {{- end -}}
-          </dd>
-        {{- end -}}
-      </dl>
-
-      {{- partial "footer" . -}}
-    </div>
-  </div>
-  {{- partial "bodyend" . -}}
-</body>
-</html>
+{{- $.Scratch.Set "@context" "_default/terms.html" -}}
+{{- $.Scratch.Set "@partial/context" "_default/terms" -}}
+{{- $taxonomyName := .Data.Plural -}}
+{{- $.Scratch.Set "@taxonomy/name" $taxonomyName -}}
+{{- $.Scratch.Set "@title" ($taxonomyName | title) -}}
+{{- partial "_core" . -}}

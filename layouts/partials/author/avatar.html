@@ -1,15 +1,20 @@
-{{ if not .Params.noauthor }}
-  {{ if isset .Params "author" }}
-    {{ if isset .Params.author "avatar" }}
-      <div class="post-avatar-wrapper"><img class="post-avatar" alt="{{ .Params.author.name }}" src="{{ .Params.author.avatar }}"></div>
-    {{ else if isset .Params.author "gravatar" }}
-      <div class="post-avatar-wrapper"><img class="post-avatar" alt="{{ .Params.author.name }}" src="//www.gravatar.com/avatar/{{ .Params.author.gravatar }}.png"></div>
-    {{ end }}
-  {{ else if and (not $.Site.Author.noauthor) $.Site.Author }}
-    {{ if isset $.Site.Author "avatar" }}
-      <div class="post-avatar-wrapper"><img class="post-avatar" alt="{{ $.Site.Author.name }}" src="{{ $.Site.Author.avatar }}"></div>
-    {{ else if isset $.Site.Author "gravatar" }}
-      <div class="post-avatar-wrapper"><img class="post-avatar" alt="{{ $.Site.Author.name }}" src="//www.gravatar.com/avatar/{{ $.Site.Author.gravatar }}.png"></div>
-    {{ end }}
-  {{ end }}
-{{ end }}
+{{- if not .Params.noauthor -}}
+  {{- if isset .Params "author" -}}
+    {{- $.Scratch.Set "l:author" .Params.author.name -}}
+    {{- $.Scratch.Set "l:avatar" .Params.author.avatar -}}
+    {{- $.Scratch.Set "l:gravatar" .Params.author.gravatar -}}
+  {{- else if and (not $.Site.Author.noauthor) $.Site.Author }}
+    {{- $.Scratch.Set "l:author" $.Site.Author.name -}}
+    {{- $.Scratch.Set "l:avatar" $.Site.Author.avatar -}}
+    {{- $.Scratch.Set "l:gravatar" $.Site.Author.gravatar -}}
+  {{- end -}}
+  {{- $name := $.Scratch.Get "l:author" -}}
+  {{- $avatar := $.Scratch.Get "l:avatar" -}}
+  {{- $gravatar := $.Scratch.Get "l:gravatar" -}}
+  {{- if and $name $avatar -}}
+    <div class="post-avatar-wrapper"><img class="post-avatar" alt="{{ $name }}" src="{{ $avatar }}"></div>
+  {{- else if and $name $gravatar -}}
+    {{ $avatar := printf "//www.gravatar.com/avatar/%s.png" $gravatar }}
+    <div class="post-avatar-wrapper"><img class="post-avatar" alt="{{ $name }}" src="{{ $avatar }}"></div>
+  {{- end -}}
+{{- end -}}

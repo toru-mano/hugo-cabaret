@@ -1,7 +1,18 @@
-{{ if not .Params.noauthor }}
-{{ if and (isset .Params "author") (isset .Params.author "name") }}
-By <a class="post-author" {{ if isset .Params.author "link" }}href="{{ .Params.author.link }}"{{ end }}>{{ .Params.author.name }}</a>
-{{ else if and (not $.Site.Author.noauthor) (isset $.Site.Author "name") }}
-By <a class="post-author" {{ if isset $.Site.Author "link" }}href="{{ $.Site.Author.link }}"{{ end }}>{{ $.Site.Author.name }}</a>
-{{ end }}
-{{ end }}
+{{- if not .Params.noauthor -}}
+  {{- if isset .Params "author" -}}
+    {{- $.Scratch.Set "l:link" .Params.author.link -}}
+    {{- $.Scratch.Set "l:name" .Params.author.name -}}
+  {{- else if not $.Site.Author.noauthor -}}
+    {{- $.Scratch.Set "l:link" $.Site.Author.link -}}
+    {{- $.Scratch.Set "l:name" $.Site.Author.name -}}
+  {{- end -}}
+  {{- $link := $.Scratch.Get "l:link" -}}
+  {{- $name := $.Scratch.Get "l:name" -}}
+  {{- if $name -}}
+<span class="post-author-list">By
+    {{ if $link }}<a class="post-author" href="{{ $link }}">{{ end -}}
+    {{ $name }}
+    {{- if $link }}</a>{{ end }}
+</span>
+  {{- end -}}
+{{- end -}}

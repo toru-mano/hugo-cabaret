@@ -1,26 +1,27 @@
 <div class="footer">
-  <hr class="thin" />
-  {{ with $.Site.Menus.footer }}
+  <hr class="thin">
+  {{- with $.Site.Menus.footer -}}
   <div class="pure-menu pure-menu-horizontal pure-menu-open">
     <ul class="footer-menu">
-      {{ range . }}
-      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-      {{ end }}
+      {{- range . -}}
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{- end -}}
     </ul>
   </div>
-  {{ end }}
+  {{- end -}}
+  {{- if $.Site.Data.copyright.html -}}
+    {{- $.Site.Data.copyright.html | safeHTML -}}
+  {{- else if $.Site.Data.copyright.markdown -}}
+    {{- $.Site.Data.copyright.markdown | markdownify -}}
+  {{- else if $.Site.Data.copyright.text -}}
+    <p>{{ $.Site.Data.copyright.text }}</p>
+  {{- else if $.Site.Copyright -}}
+    <p>{{ $.Site.Copyright }}</p>
+  {{- else -}}
+    <p>&copy; {{ .Now.Format "2006" }} {{ $.Site.Author }}. All rights reserved.</p>
+  {{- end -}}
 
-  {{ if $.Site.Data.copyrightHTML }}
-    <p>{{ $.Site.Data.copyrightHTML | safeHTML }}</p>
-  {{ else if $.Site.Data.copyright }}
-    {{ $.Site.Data.copyrightHTML | markdownify }}
-  {{ else if $.Site.Copyright }}
-    <p>{{ $.Site.Copyright | safeHTML }}</p>
-  {{ else }}
-    <p>&copy; {{ .Now.Format "2006" }}. All rights reserved.</p>
-  {{ end }}
-
-  {{ if not $.Site.Data.hidepoweredbyhugo }}
+  {{- if not $.Site.Data.hidepoweredbyhugo -}}
     <p>Powered by <a href="http://gohugo.io/">Hugo</a>.</p>
-  {{ end }}
+  {{- end -}}
 </div>

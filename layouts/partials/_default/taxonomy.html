@@ -1,0 +1,28 @@
+{{- $root := . -}}
+{{- $title := (.Title | urlize | title) -}}
+{{- $page := (index .Data.Pages 0) -}}
+{{- $plural := .Data.Plural -}}
+{{- $singular := .Data.Singular -}}
+{{- range $taxonomy, $value := .Data -}}
+  {{- if eq $taxonomy $singular -}}
+    {{- range (index $page.Params $plural) -}}
+      {{- if eq $title (. | urlize | title) -}}
+<h1 class="post-title">{{- . -}}</h1>
+        {{- $desc := printf "%s-desc" $taxonomy -}}
+        {{- $desctax := index $root.Site.Taxonomies $desc -}}
+        {{- $descpages := index $desctax (. | urlize) -}}
+        {{- if len $descpages -}}
+          {{- $descpage := index $descpages 0 -}}
+<span class="term-desc">{{- $descpage.Page.Content -}}</span>
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+<div class="posts">
+  <ul>
+    {{- range .Data.Pages -}}
+    <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+    {{- end -}}
+  </ul>
+</div>

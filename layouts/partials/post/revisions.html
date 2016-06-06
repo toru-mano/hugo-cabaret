@@ -1,10 +1,10 @@
-{{ if .Params.revisions }}
-  {{ $.Scratch.Set "post-one-revisions-block" true }}
+{{- if .Params.revisions -}}
+  {{- $.Scratch.Set "post-one-revisions-block" true -}}
   <blockquote id="revisions" class="revisions">
-    <hr/>
-    {{ partial "post/revisions/notice" . }}
-    {{ partial "post/revisions/details" . }}
-    <hr/>
+    <hr>
+    {{- partial "post/revisions/notice" . -}}
+    {{- partial "post/revisions/details" . -}}
+    <hr>
   </blockquote>
-  {{ $.Scratch.Set "post-one-revisions-block" false }}
-{{ end }}
+  {{- $.Scratch.Set "post-one-revisions-block" false -}}
+{{- end -}}

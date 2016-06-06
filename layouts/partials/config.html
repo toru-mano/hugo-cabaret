@@ -1,3 +1,0 @@
-{{- $title404 := or $.Site.Data.layout.title404 $.Site.Data.cabaret.layout.title404 -}}
-{{- $title := or (and ($.Scratch.Get "is404?") $title404) .Title -}}
-{{- $.Scratch.Set "@title" $title -}}

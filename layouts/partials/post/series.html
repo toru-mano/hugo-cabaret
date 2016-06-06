@@ -1,1 +1,7 @@
-{{ if .Params.series }}{{ $name := index .Params.series 0 }}<p class="seriesname">Series: <a href="{{ (printf "/series/%s" ($name | urlize)) | relURL }}">{{ $name }}</a></p>{{ end }}
+{{- if .Params.series -}}
+  {{- $name := index .Params.series 0 -}}
+<p class="seriesname">
+  Series:
+  <a href="{{ (printf "/series/%s" ($name | urlize)) | relURL }}">{{ $name }}</a>
+</p>
+{{- end -}}

@@ -1,9 +1,9 @@
 <!-- Depends on a Site Param hash of google_analytics with two keys: .tracking_id and .anonymize_ip -->
-{{ with $.Site.Params.google_analytics }}
+{{- with or $.Site.Params.google_analytics $.Site.Data.google_analytics -}}
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '{{ .tracking_id }}']);
-  {{ if .anonymize_ip }}_gaq.push (['_gat._anonymizeIp']);{{ end }}
+  _gaq.push(['_setAccount', {{ .tracking_id }}]);
+  {{- if .anonymize_ip -}}_gaq.push (['_gat._anonymizeIp']);{{- end -}}
   _gaq.push(['_trackPageview']);
 
   (function() {
@@ -12,4 +12,4 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
-{{ end }}
+{{- end -}}

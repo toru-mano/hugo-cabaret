@@ -9,7 +9,7 @@
 {{- $type := or $.Site.Data.og.type $type -}}
 {{- $type := or .Params.og.type $type -}}
 <meta property="og:type" content="{{ $type }}">
-{{ with $.Scratch.Get "lang" }}<meta property="og:locale" content="{{ . }}">{{ end }}
+{{ with $.Scratch.Get "@lang" }}<meta property="og:locale" content="{{ . }}">{{ end }}
 {{- $image := or $.Site.Data.og.image $.Site.Data.cabaret.og.image -}}
 {{- $image := or .Params.og.image $image -}}
 {{ with $image }}<meta property="og:image" content="{{ . }}">{{ end }}

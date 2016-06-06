@@ -1,0 +1,22 @@
+{{- $pages := .Data.Pages -}}
+{{- range $index, $page := $pages -}}
+  {{- if eq $index 0 -}}
+<h2>{{ .Date.Format "2006" }}</h2>
+<ul>
+  {{- else if (not (eq (.Date.Format "2006") ((index $pages (sub $index 1)).Date.Format "2006"))) -}}
+</ul>
+<h2>{{ .Date.Format "2006" }}</h2>
+<ul>
+  {{- end -}}
+  <li>
+    <span>
+      <span class="post-date">
+        <span class="post-date-day"><sup>{{ .Date.Format "2" }}</sup></span>
+        <span class="post-date-separator">/</span>
+        <span class="post-date-month">{{ .Date.Format "Jan" }}</span>
+      </span>
+      <a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }} [draft]{{ end }}</a>
+    </span>
+  </li>
+{{- end -}}
+</ul>

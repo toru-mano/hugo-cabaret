@@ -4,21 +4,15 @@
 </h1>
 {{- partial "code/badges" . -}}
 {{- with .Params.subtitle }}<h3 class="post-subtitle">{{ . }}</h3>{{ end -}}
-
 {{- partial "post/date" . -}}
 {{- partial "author/for-post" . -}}
 {{- partial "author/social/list" . -}}
 {{- partial "post/categories" . -}}
 {{- partial "socialsharing/buttons" . -}}
 {{- partial "post/bannerinline" . -}}
-
 {{- partial "post/revisions/notice" . -}}
-
 {{- partial "post/series" . -}}
-
 {{- .Content -}}
-
 {{- partial "post/revisions/details" . -}}
-
 {{- partial "socialsharing/buttons" . -}}
 {{- partial "post/tag/list" . -}}

@@ -1,24 +1,20 @@
-{{ if not .Params.noauthor }}
-  {{ $social := or ($.Site.Data.social.sites) ($.Site.Params.social) }}
-  {{ if isset .Params.author "social" }}
-    {{ range .Params.author.social }}
-      {{ partial "author/social/site" . }}
-    {{ end }}
+{{- if not .Params.noauthor -}}
+  {{- $social := or ($.Site.Data.social.sites) ($.Site.Params.social) -}}
+  {{- if isset .Params.author "social" -}}
+    {{- range .Params.author.social }}
+      {{- partial "author/social/site" . -}}
+    {{- end -}}
   {{ else if isset .Params.author "social-sites" }}
-    {{ range $name := index .Params.author "social-sites" }}
-      {{ range $social }}
-        {{ if eq $name .site }}
-          {{ partial "author/social/site" . }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
+    {{- range $name := index .Params.author "social-sites" -}}
+      {{- range where $social "site" $name -}}
+        {{- partial "author/social/site" . -}}
+      {{- end -}}
+    {{- end -}}
   {{ else if and (not $.Site.Author.noauthor) (isset $.Site.Author "social-sites") }}
     {{ range $name := index $.Site.Author "social-sites" }}
-      {{ range $social }}
-        {{ if eq $name .site }}
-          {{ partial "author/social/site" . }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-{{ end }}
+      {{- range where $social "site" $name -}}
+        {{- partial "author/social/site" . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

@@ -1,4 +1,4 @@
-{{ with (or ((.Param "inspectletid") $.Site.Data.inspectletid)) }}
+{{- with (or ((.Param "inspectletid") $.Site.Data.inspectletid)) -}}
 <!-- Begin Inspectlet Embed Code -->
 <script type="text/javascript" id="inspectletjs">
   window.__insp = window.__insp || [];
@@ -13,4 +13,4 @@
   })();
 </script>
 <!-- End Inspectlet Embed Code -->
-{{ end }}
+{{- end -}}

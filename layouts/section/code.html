@@ -1,40 +1,4 @@
-{{ partial "doctype" . }}
-<head>
-  {{ partial "head" . }}
-</head>
-<body>
-  <div id="layout" class="pure-g">
-    {{ partial "sidebar" . }}
-
-    <div id="top" class="content pure-u-1 pure-u-md-3-4">
-      {{ partial "list/top" . }}
-
-      <h1 class="post-title">Projects</h1>
-      {{ $pages := .Data.Pages }}
-
-      <div class="posts">
-        {{ range $index, $page := .Data.Pages }}
-        <section class="post">
-          <header class="post-header">
-            <h2>
-              <a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }} [draft]{{ end }}</a>
-              {{ partial "code/badges" . }}
-            </h2>
-          </header>
-          <article class="post-summary">
-            {{ if .Description }}
-              {{ .Description }}
-            {{ else }}
-              {{ .Summary }}
-            {{ end }}
-          </article>
-        </section>
-        {{ end }}
-      </div>
-
-      {{ partial "footer" . }}
-    </div>
-  </div>
-  {{ partial "bodyend" . }}
-</body>
-</html>
+{{- $.Scratch.Set "@context" "section/code.html" -}}
+{{- $.Scratch.Set "@partial/context" "section/code" -}}
+{{- $.Scratch.Set "@title" "Projects" -}}
+{{- partial "_core" . -}}

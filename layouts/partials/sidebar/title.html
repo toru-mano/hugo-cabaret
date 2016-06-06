@@ -1,5 +1,8 @@
 <h1 class="brand-title">
   <a href="{{ $.Site.BaseURL }}">
-    {{ $title := or (or .Params.sidebartitle ($.Site.Data.sidebar.title)) $.Site.Params.sidebar.title }}{{ if $title }}{{ $title }}{{ else }}{{ $.Site.Title }}{{ end }}
+    {{- $title := or .Params.sidebartitle $.Site.Data.sidebar.title -}}
+    {{- $title := or $title $.Site.Params.sidebar.title -}}
+    {{- $title := or $title $.Site.Title -}}
+    {{- $title -}}
   </a>
 </h1>

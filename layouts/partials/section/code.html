@@ -1,0 +1,18 @@
+{{- $pages := .Data.Pages -}}
+{{- range $index, $page := $pages -}}
+<section class="post">
+  <header class="post-header">
+    <h2>
+      <a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }} [draft]{{ end }}</a>
+      {{- partial "code/badges" . -}}
+    </h2>
+  </header>
+  <article class="post-summary">
+    {{- if .Description -}}
+      {{- .Description -}}
+    {{- else -}}
+      {{- .Summary -}}
+    {{- end -}}
+  </article>
+</section>
+{{- end -}}

@@ -1,1 +1,4 @@
-{{ $tagline := or (or (or ($.Site.Data.sidebar.tagline) ($.Site.Params.sidebar.tagline)) $.Site.Data.description) $.Site.Params.description }}{{ if $tagline }}<h2 class="brand-tagline">{{ $tagline }}</h2>{{ end }}
+{{- $tagline := or $.Site.Data.sidebar.tagline $.Site.Params.sidebar.tagline -}}
+{{- $tagline := or $tagline $.Site.Data.description -}}
+{{- $tagline := or $tagline $.Site.Params.description -}}
+{{- if $tagline -}}<h2 class="brand-tagline">{{ $tagline }}</h2>{{- end -}}

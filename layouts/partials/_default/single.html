@@ -1,0 +1,7 @@
+{{- partial "post/toc" . -}}
+<section class="post">
+  {{- .Render "post/full" -}}
+  {{- partial "post/paging" . -}}
+</section>
+{{- partial "post/comment" . -}}
+{{- partial "socialsharing/script" . -}}

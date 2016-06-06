@@ -1,9 +1,7 @@
-<!-- layouts/partials/discourse.html -->
 <div id="discourse-comments"></div>
-
 <script type="text/javascript">
-  var discourseUrl = '{{ $.Site.Params.discourseURL }}';
-  var discourseEmbedUrl = '{{ .Permalink }}';
+  var discourseUrl = {{ $.Site.Params.discourseURL }};
+  var discourseEmbedUrl = {{ .Permalink }};
 
   (function() {
     var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;

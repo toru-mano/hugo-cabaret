@@ -1,7 +1,7 @@
-{{ $rel := or .Rel "icon" }}
+{{- $rel := or .Rel "icon" -}}
 {{- range .Icons -}}
   {{- $href := .href -}}
   {{- $size := .size -}}
   {{- $type := or .type "image/png" -}}
   <link href="{{ $href }}" rel="{{ $rel }}" {{ with $size }}sizes="{{ . }}"{{ end }} type="{{ $type }}">
-{{ end -}}
+{{- end -}}

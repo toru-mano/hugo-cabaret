@@ -1,5 +1,5 @@
-{{ if .Params.banner.image }}
+{{- if .Params.banner.image -}}
 <div class="content-banner-image pure-u-1 pure-u-md-3-4" style="{{ if .Params.banner.height }}height: {{ .Params.banner.height }}px;{{ end }}">
   <img src="{{ .Params.banner.image }}" class="pure-img" style="{{ if .Params.banner.fill }}width: 100%;{{ end }}" />
 </div>
-{{ end }}
+{{- end -}}

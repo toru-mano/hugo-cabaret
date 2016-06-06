@@ -1,5 +1,3 @@
-{{ if .icon }}
-<span class="post-author-social post-author-{{ .site | lower }}">
-  <a href="{{ .author.url | relURL }}" target="_blank"><i class="fa fa-{{ .icon }}"></i></a>
-</span>
-{{ end }}
+{{- if .icon -}}
+<span class="post-author-social post-author-{{ .site | lower }}"><a href="{{ .url | relURL }}"><i class="fa fa-{{ .icon }}"></i></a></span>
+{{- end -}}

@@ -1,7 +1,7 @@
-{{ if not (.Param "nocomment") }}
-  {{ if isset $.Site.Params "disqusShortname" }}
-    {{ template "_internal/disqus.html" . }}
-  {{ else if isset $.Site.Params "discourseURL" }}
-    {{ partial "comments/discourse" . }}
-  {{ end }}
-{{ end }}
+{{- if not (.Param "nocomment") -}}
+  {{- if isset $.Site.Params "disqusShortname" -}}
+    {{- template "_internal/disqus.html" . -}}
+  {{- else if isset $.Site.Params "discourseURL" -}}
+    {{- partial "comments/discourse" . -}}
+  {{- end -}}
+{{- end -}}
