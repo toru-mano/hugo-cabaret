@@ -15,7 +15,7 @@
     {{- end -}}
   </section>
   {{- else -}}
-    {{- if or (and $allPostLimit (lt $index $allPostLimit)) (lt $index $count) -}}
+    {{- if and (and $allPostLimit (lt $index $allPostLimit)) (lt $index $count) -}}
       {{- .Render "post/title" -}}
     {{- end -}}
   {{- end -}}
